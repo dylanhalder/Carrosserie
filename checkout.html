@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Checkout — The Sticky Kind</title>
+<meta name="description" content="Complete your order with The Sticky Kind.">
+<meta name="theme-color" content="#fbf5ec">
+<meta property="og:title" content="Checkout — The Sticky Kind">
+<meta property="og:description" content="Complete your order with The Sticky Kind.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/img/stickers/cottage.png">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Caveat:wght@500;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="checkout">
+<a class="skip" href="#main">Skip to content</a>
+<div class="announce"><p>✶ Drop No. 12 ships Dec 1 — <a href="club.html">join the club by Nov 25</a> to get it ✶</p></div>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="index.html" aria-label="The Sticky Kind — home">
+      <img src="assets/img/stickers/cottage.png" alt="">
+      <span class="logo-word">the sticky <em>kind</em></span>
+    </a>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="drop.html" data-nav="drop">This month</a></li>
+        <li><a href="club.html" data-nav="club">The Club</a></li>
+        <li><a href="shop.html" data-nav="shop">Shop</a></li>
+        <li><a href="info.html" data-nav="info">Info</a></li>
+      </ul>
+      <a class="btn btn-sm nav-cta-desktop" href="club.html">Join the club</a>
+      <div class="nav-extra">
+        <div class="stickers"><img class="stk" src="assets/img/stickers/bow.png" alt="" style="--r:-8deg"><img class="stk" src="assets/img/stickers/sweater.png" alt="" style="--r:6deg"><img class="stk" src="assets/img/stickers/cinnamon.png" alt="" style="--r:-4deg;width:44px"></div>
+        <a class="btn btn-block" href="club.html">Join the club — from $8/mo</a>
+        <p class="small muted" style="margin:0">New themed sheet in your mailbox every month.</p>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" data-cart-open aria-label="Open bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 8Z"/><path d="M9 10V6.5a3 3 0 0 1 6 0V10"/></svg><span class="cart-count" data-cart-count data-empty="true">0</span></button>
+      <button class="icon-btn menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span class="bars"></span></button>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-head" style="padding-bottom:20px">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> / <span>Checkout</span></nav>
+    <h1 style="font-size:clamp(2.2rem,6vw,3.4rem)">Checkout</h1>
+    <div class="steps-mini"><b>1. Details</b> → <span>2. Secure payment on Stripe</span> → <span>3. Happy mail</span></div>
+  </div>
+</section>
+<section style="padding-bottom:40px">
+  <div class="wrap">
+    <div class="demo-banner" data-demo-banner hidden>
+      <span aria-hidden="true">🧪</span>
+      <div><strong>Demo mode, no real charges.</strong> Add your Stripe keys in <code>assets/js/config.js</code> and deploy <code>/api/create-checkout-session</code> to take real payments.</div>
+    </div>
+
+    <div class="empty-state" data-empty hidden>
+      <img class="stk" src="assets/img/stickers/cinnamon.png" alt="" style="--r:-6deg">
+      <h2>Your bag is empty</h2>
+      <p class="muted">Pick a club plan or grab a few singles first.</p>
+      <div class="btn-row" style="justify-content:center"><a class="btn" href="club.html">Join the club</a><a class="btn btn-ghost" href="shop.html">Shop singles</a></div>
+    </div>
+
+    <div class="checkout-grid" data-checkout hidden>
+      <form id="checkout-form" novalidate>
+        <div class="panel">
+          <h2><span class="n">1</span> Contact</h2>
+          <div class="field"><label for="co-email">Email</label><input id="co-email" name="email" type="email" required autocomplete="email" placeholder="you@email.com"><span class="hint">Receipts, shipping updates and your membership login go here.</span></div>
+          <label class="check"><input type="checkbox" name="marketing"> Send me the monthly theme reveal &amp; restock emails (optional)</label>
+        </div>
+
+        <div class="panel">
+          <h2><span class="n">2</span> Shipping</h2>
+          <label class="check" style="margin-bottom:16px"><input type="checkbox" name="isGift" data-gift-toggle> This is a gift 🎁</label>
+          <div class="collapse" data-gift-fields hidden>
+            <div class="field"><label for="co-giftnote">Gift note <span class="hint">(we'll handwrite it, 200 characters max)</span></label><textarea id="co-giftnote" name="giftNote" maxlength="200" placeholder="Happy holidays, you sticky little thing ♡"></textarea></div>
+            <p class="small muted" style="margin-top:-6px">Enter the recipient's name &amp; address below. Prices are never included in gift packages.</p>
+          </div>
+          <div class="field"><label for="co-name">Full name</label><input id="co-name" name="name" required autocomplete="shipping name"></div>
+          <div class="field"><label for="co-country">Country / region</label>
+            <select id="co-country" name="country" required autocomplete="shipping country">
+              <option value="US" data-region="US">United States</option>
+              <option value="CA" data-region="CA">Canada</option>
+              <option value="GB" data-region="INTL">United Kingdom</option>
+              <option value="AU" data-region="INTL">Australia</option>
+              <option value="DE" data-region="INTL">Germany</option>
+              <option value="FR" data-region="INTL">France</option>
+              <option value="NL" data-region="INTL">Netherlands</option>
+              <option value="IE" data-region="INTL">Ireland</option>
+              <option value="NZ" data-region="INTL">New Zealand</option>
+              <option value="JP" data-region="INTL">Japan</option>
+            </select>
+          </div>
+          <div class="field"><label for="co-line1">Address</label><input id="co-line1" name="line1" required autocomplete="shipping address-line1"></div>
+          <div class="field"><label for="co-line2">Apartment, suite, etc. <span class="hint">(optional)</span></label><input id="co-line2" name="line2" autocomplete="shipping address-line2"></div>
+          <div class="row-2 row-3">
+            <div class="field"><label for="co-city">City</label><input id="co-city" name="city" required autocomplete="shipping address-level2"></div>
+            <div class="field"><label for="co-state">State / province</label><input id="co-state" name="state" autocomplete="shipping address-level1"></div>
+            <div class="field"><label for="co-zip">ZIP / postal</label><input id="co-zip" name="postal_code" required autocomplete="shipping postal-code"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2><span class="n">3</span> Payment</h2>
+          <div class="field"><label for="co-promo">Promo or member code <span class="hint">(optional)</span></label>
+            <input id="co-promo" name="promoCode" autocomplete="off" placeholder="e.g. STICKYKIND15" style="text-transform:uppercase"><span class="hint">Applied on the secure payment page.</span></div>
+
+          <!-- STRIPE PLACEHOLDER ────────────────────────────────────────────
+               Default flow: hosted Stripe Checkout. On submit we POST the bag
+               to /api/create-checkout-session and redirect to the returned URL.
+               Prefer to keep shoppers on-page? Swap this box for Stripe
+               Embedded Checkout or the Payment Element (see checkout.js). -->
+          <div class="stripe-box" id="payment-element">
+            <div class="sb-head"><span>Card, Apple Pay, Google Pay &amp; more</span><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> Stripe</span></div>
+            <p>You'll enter payment details on Stripe's secure page next. We never see or store your card number.</p>
+          </div>
+
+          <div class="collapse" data-renew-consent hidden style="margin-top:18px">
+            <label class="check"><input type="checkbox" name="renewConsent" id="co-renew">
+              <span>I understand my <strong data-renew-plan>club membership</strong> renews automatically at <strong data-renew-amount>$9.00</strong> every <span data-renew-interval>month</span> until I cancel. I can cancel anytime in my membership portal before my next renewal. See the <a href="terms.html#club" target="_blank">membership terms</a>.</span></label>
+          </div>
+          <label class="check" style="margin-top:14px"><input type="checkbox" name="terms" id="co-terms" required>
+            <span>I agree to the <a href="terms.html" target="_blank">Terms of Service</a> and have read the <a href="privacy.html" target="_blank">Privacy Policy</a>.</span></label>
+
+          <div class="form-error" role="alert" data-error></div>
+          <button class="btn btn-block" type="submit" style="margin-top:20px" data-pay>Continue to secure payment</button>
+          <p class="center small muted" style="margin:12px 0 0"><span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> Encrypted &amp; processed by Stripe</span></p>
+        </div>
+      </form>
+
+      <aside class="panel summary" aria-labelledby="sum-title">
+        <span class="tape"></span>
+        <h2 id="sum-title" style="justify-content:space-between">Your order <a class="small text-link" href="shop.html" style="font-size:.85rem">Keep shopping</a></h2>
+        <div class="sum-lines" data-sum-lines></div>
+        <div class="totals">
+          <div><span>Subtotal</span><span data-sum-subtotal>$0.00</span></div>
+          <div><span>Shipping <span class="small muted" data-sum-region></span></span><span data-sum-shipping>$0.00</span></div>
+          <div><span>Tax</span><span class="muted small">Calculated on payment</span></div>
+          <div class="grand"><span>Due today</span><span data-sum-total>$0.00</span></div>
+        </div>
+        <div class="recurring-note" data-sum-recurring hidden></div>
+      </aside>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="footer-stickers" aria-hidden="true">
+    <img class="stk" src="assets/img/stickers/bow.png" alt="" style="--r:-10deg">
+    <img class="stk" src="assets/img/stickers/santa.png" alt="" style="--r:8deg">
+  </div>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="logo-word">the sticky kind</span>
+        <p>Small-batch sticker sheets, designed by hand and mailed monthly to the sticky kind club.</p>
+        <form class="inline-form footer-news" data-newsletter style="margin-top:20px">
+          <label class="visually-hidden" for="f-news">Email address</label>
+          <input class="input" id="f-news" type="email" required placeholder="you@email.com" autocomplete="email">
+          <button class="btn btn-blush btn-sm" type="submit" style="min-height:50px">Get drop alerts</button>
+        </form>
+        <div class="socials">
+          <a href="https://instagram.com/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="https://tiktok.com/" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 3c.3 2.2 1.8 3.8 4 4v3.1c-1.5 0-2.9-.4-4-1.1v6.3a6.2 6.2 0 1 1-6.2-6.2c.3 0 .6 0 .9.1v3.2a3 3 0 1 0 2.1 2.9V3h3.2Z"/></svg></a>
+          <a href="https://pinterest.com/" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.6 19.3c-.1-.8-.2-2.1 0-3l1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.5 1.8-2.5.9 0 1.3.7 1.3 1.4 0 .9-.6 2.2-.9 3.4-.2 1 .5 1.9 1.6 1.9 1.9 0 3.3-2 3.3-4.9 0-2.6-1.8-4.4-4.5-4.4a4.6 4.6 0 0 0-4.8 4.6c0 .9.3 1.9.8 2.4l.1.4-.3 1.2c0 .2-.2.3-.4.2-1.4-.7-2.2-2.7-2.2-4.3 0-3.5 2.5-6.7 7.3-6.7 3.8 0 6.8 2.7 6.8 6.4 0 3.8-2.4 6.9-5.8 6.9-1.1 0-2.2-.6-2.5-1.3l-.7 2.6c-.3 1-.9 2.2-1.4 2.9A10 10 0 1 0 12 2Z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="drop.html">This month's drop</a></li>
+            <li><a href="club.html">The Club</a></li>
+            <li><a href="shop.html">Singles &amp; packs</a></li>
+            <li><a href="club.html#gift">Gift a membership</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Help</h4>
+          <ul>
+            <li><a href="info.html#how">How it works</a></li>
+            <li><a href="info.html#faq">FAQ</a></li>
+            <li><a href="shipping.html">Shipping &amp; returns</a></li>
+            <li><a href="https://billing.stripe.com/p/login/REPLACE_ME" data-portal>Manage membership</a></li>
+            <li><a href="info.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy policy</a></li>
+            <li><a href="terms.html">Terms of service</a></li>
+            <li><a href="accessibility.html">Accessibility</a></li>
+            <li><button type="button" data-cookie-settings>Cookie settings</button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> The Sticky Kind. Designs are ours — please don't copy them.</span>
+      <span class="pay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" width="16" height="16"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> Payments secured by Stripe</span>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" data-cart-close></div>
+<aside class="drawer" aria-label="Your bag" aria-hidden="true">
+  <div class="drawer-head">
+    <h2>Your bag</h2>
+    <button class="icon-btn" data-cart-close aria-label="Close bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="drawer-body" data-cart-body></div>
+  <div class="drawer-foot" data-cart-foot hidden>
+    <div class="sum-row"><span>Subtotal</span><span data-cart-subtotal>$0.00</span></div>
+    <p class="note" data-cart-note></p>
+    <a class="btn btn-block" href="checkout.html">Checkout</a>
+  </div>
+</aside>
+
+<div class="cookie" role="dialog" aria-labelledby="cookie-title" hidden>
+  <h2 id="cookie-title">A tiny cookie note 🍪</h2>
+  <p>We use essential cookies to keep your bag working. With your OK we'd also use analytics to see which stickers you love. <a href="privacy.html#cookies">Details</a></p>
+  <div class="btn-row">
+    <button class="btn btn-sm" data-consent="all">Sounds good</button>
+    <button class="btn btn-sm btn-ghost" data-consent="essential">Essential only</button>
+  </div>
+</div>
+
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/checkout.js" defer></script>
+</body>
+</html>

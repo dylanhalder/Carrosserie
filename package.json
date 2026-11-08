@@ -1,0 +1,13 @@
+{
+  "name": "the-sticky-kind",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Storefront for The Sticky Kind — monthly sticker sheet club + shop.",
+  "scripts": {
+    "dev": "npx --yes serve -l 3000 .",
+    "stripe:listen": "stripe listen --forward-to localhost:3000/api/stripe-webhook"
+  },
+  "dependencies": {
+    "stripe": "^17.7.0"
+  }
+}
